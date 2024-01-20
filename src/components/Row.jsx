@@ -5,19 +5,13 @@ import { MdChevronLeft, MdChevronRight } from 'react-icons/md';
 
 export default function Row(props) {
   const { title, fetchURL, rowID } = props;
-
   const [movies, setMovies] = useState([]);
-  // const [scrollCustom, setScrollCustom] = useState(0);
 
   useEffect(() => {
     axios.get(fetchURL).then((response) => {
       setMovies(response.data.results);
     });
   }, [fetchURL]);
-
-  // const handleScroll = (e) => {
-  //   setScrollCustom(e.target.scrollLeft);
-  // };
 
   const slideLeft = () => {
     let slider = document.getElementById(`slider ${rowID}`);
